@@ -31,7 +31,6 @@ app.get('/', function (req, res) {
 // starting the server
 app.listen(port, function () {
     console.log(`Example app listening on port ${port}`);
-    console.log(textapi);
 })
 
 

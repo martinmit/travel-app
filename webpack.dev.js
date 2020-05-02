@@ -8,7 +8,6 @@ module.exports = {
     mode: 'development',
     devtool: 'source-map',
     devServer: {
-        // Update port to 3000 for classroom
         port: 8888
     },
     stats: 'verbose',
