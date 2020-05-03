@@ -11,22 +11,33 @@
       <div class ="holder headline">
           The world's greatest travel planner
       </div>
-      <div class ="holder zip">
+      <div class="holder zip">
         <label for="location">Enter your dream location here</label>
-        <input type="text" id="location" placeholder="enter travel location here">
+        <input type="text" id="location" placeholder="Enter travel location here">
       </div>
       <div class ="holder feel">
         <label for="feelings">When will your adventure start?</label>
         <input type="date" class= "myInput" id="date" placeholder="Enter the start date"></input>
-        <button id="generate" type = "submit"> Generate </button>
+        <button id="generate" type = "submit"> Generate travel info </button>
       </div>
-      <div class ="holder entry">
-        <div class = "title">Most Recent Entry</div>
-        <div id = "entryHolder">
-          <div id = "date"></div> 
-          <div id = "temp"></div>
-          <div id = "content"></div>
+      <div class="holder entry">
+        <div class="title">Your adventure in a nutshell</div>
+        <div id="entryHolder">
+          <div>Your trip will be awesome! Here are some facts and impressions:</div>
+          <div id="travel_date"></div>
+          <div>A year ago the temperature looked like this:</div>
+          <div id="temp_max"></div> 
+          <div id="temp_min"></div>
+          <div>Look how awesome it looks there:</div>
+          <figure>
+            <img id="picture" src="" alt="" style="width:100%">
+            <figcaption id="caption"></figcaption>
+          </figure>
         </div>
+      </div>
+      <div>
+        <div>Your past trips (click to display)</div>
+          <ul id="pastTrips"></ul>
       </div>
     </div>
   </body>
