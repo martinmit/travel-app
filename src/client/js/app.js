@@ -2,13 +2,16 @@
 //Geolocations API
 const geoNamesBaseURL = 'http://api.geonames.org/postalCodeSearchJSON?';
 const geoNamesUserName = '&username=martinmit';
+//WeatherBit API - to avoid cors-errors it runs via cors-anywhere
 const weatherbitBaseURL = 'https://cors-anywhere.herokuapp.com/http://api.weatherbit.io/v2.0/history/daily?';
 const weatherbitAPIKey = '&key=045bab365c5c4e1d92276c3a4fb63205';
+//pixabay API - to avoid cors-errors it runs via cors-anywhere
 const pixaBayAPIKey = '16331094-8019aa7939ed63cad531dbbaf'
 const pixaBayBaseURL ='https://cors-anywhere.herokuapp.com/https://pixabay.com/api/?key=' + pixaBayAPIKey;
+//Variable for holding the travel data
 var travelData = {};
 
-// Set up the local storage for saving trip data and get trips saved in the past
+// Set up the local storage for saving trip data and get trips saved in the past and update the view to make them accessible
 var tripsArray = localStorage.getItem('trips') ? JSON.parse(localStorage.getItem('trips')) : [];
 function displayPastTrips(){
     tripsArray.forEach(trip => {
@@ -33,11 +36,7 @@ function displayPastTrips(){
 
 displayPastTrips();
 
-// Create a new date instance dynamically with JS
-let d = new Date();
-let newDate = d.getMonth()+'.'+ d.getDate()+'.'+ d.getFullYear();
-
-//make API calls to geo names and to weatherbit and post it to server and adopt the UI
+//make API calls to geo names,to weatherbit and to pixabay and adopt the UI
 function getLocationData(){
     const newLocation =  'placename=' + document.getElementById('location').value + '&maxRows=1';
     travelData.destination = document.getElementById('location').value;
@@ -84,6 +83,7 @@ function getLocationData(){
     })
 }
 
+//general function to update the view with the loaded data or with the data from past travels
 function updateView(){
     document.getElementById('travel_date').innerHTML = 'Your adventure will start on ' + travelData.date;
         document.getElementById('temp_max').innerHTML = 'The highest temperature this day was ' + travelData.maxTemp + "° C";
@@ -93,21 +93,16 @@ function updateView(){
         document.getElementById('caption').innerHTML = travelData.caption;
 }
 
-//attach event handler to generate button
-document.getElementById('generate').addEventListener('click', getLocationData);
-
+//attach event handler to generate button as soon as the dom is loaded
+document.addEventListener('DOMContentLoaded', function () {
+    let button = document.getElementById('generate');
+    button.addEventListener('click', getLocationData);
+});
 
 
 //general function for API calls
 const getAPIData = async (URL, search, userName)=>{
-  const response = await fetch(URL + search + userName /*,{
-    method: 'POST',
-    credentials: 'same-origin',
-    mode: 'cors',
-    headers: {
-        'Content-Type': 'application/json'
-    }
-}*/)
+  const response = await fetch(URL + search + userName)
     try {
         const data = await response.json();
     return data;
@@ -120,3 +115,4 @@ const getAPIData = async (URL, search, userName)=>{
 
 
 export {getLocationData , getAPIData, displayPastTrips, updateView}
+

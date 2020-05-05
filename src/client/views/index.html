@@ -7,38 +7,42 @@
       <link rel="stylesheet" href="./styles/style.css">
   </head>
   <body>
-    <div id = "app">
-      <div class ="holder headline">
-          The world's greatest travel planner
+    <div class="app">
+      <div class="headline">
+          <h1>The world's greatest travel planner</h1>
       </div>
-      <div class="holder zip">
-        <label for="location">Enter your dream location here</label>
-        <input type="text" id="location" placeholder="Enter travel location here">
+      <div class="input">
+        <div>
+          <label for="location">Enter your dream location here</label>
+          <input type="text" id="location" placeholder="Enter travel location here">
+        </div>
+        <div>
+          <label for="date">When will your adventure start?</label>
+          <input type="date"  id="date" placeholder="Enter the start date"></input>
+          <button id="generate" type = "submit"> Generate travel info </button>
+        </div>
       </div>
-      <div class ="holder feel">
-        <label for="feelings">When will your adventure start?</label>
-        <input type="date" class= "myInput" id="date" placeholder="Enter the start date"></input>
-        <button id="generate" type = "submit"> Generate travel info </button>
+      <div class="past">
+          <p>Your past trips (click to display)</p>
+          <ul id="pastTrips"></ul>
       </div>
-      <div class="holder entry">
-        <div class="title">Your adventure in a nutshell</div>
+      <div class="results">
+        <h1>Your adventure in a nutshell</h1>
         <div id="entryHolder">
-          <div>Your trip will be awesome! Here are some facts and impressions:</div>
-          <div id="travel_date"></div>
-          <div>A year ago the temperature looked like this:</div>
-          <div id="temp_max"></div> 
-          <div id="temp_min"></div>
-          <div>Look how awesome it looks there:</div>
+          <p>Your trip will be awesome! Here are some facts and impressions:</p>
+          <p id="travel_date"></p>
+          <p>A year ago the temperature looked like this:</p>
+          <p id="temp_max"></p> 
+          <p id="temp_min"></p>
+          <p>Look how awesome it looks there:</p>
+        </div>
+        <div class="travelImage">
           <figure>
             <img id="picture" src="" alt="" style="width:100%">
             <figcaption id="caption"></figcaption>
           </figure>
         </div>
-      </div>
-      <div>
-        <div>Your past trips (click to display)</div>
-          <ul id="pastTrips"></ul>
-      </div>
+      </div>     
     </div>
   </body>
 </html>
